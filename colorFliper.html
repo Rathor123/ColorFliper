@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7b35c072c3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/7b35c072c3.css" crossorigin="anonymous">
+    <title>Color Flipper</title>
+    <style>
+               @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Tilt+Prism&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .body {
+            background-color: green;
+        }
+
+        .colorContainer {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btn {
+            align-items: center;    
+            font-size: 50px;
+            padding: 20px 40px;
+            border-radius: 40px;
+            /* transition: 5s; */
+            border: none;
+            background-color: white;
+
+        }
+        
+        /* #animation{
+            width: 2px;
+            height: 2px;
+            background-color: green;
+            animation-name: top;
+            animation-duration: 2s;
+            background-color: yellow;
+            animation-iteration-count: infinite;
+        
+        } */
+        #btn:hover{
+            animation-name: top;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+
+        }
+        @keyframes top {
+            10%{
+                border-left: 4px solid rgb(218, 218, 70);
+                
+            }
+            30%{
+                border-top: 4px solid rgb(218, 218, 70);
+            }
+            50%{
+                border-right: 4px solid rgb(218, 218, 70);
+            }
+            75%{
+                border-bottom: 4px solid rgb(218, 218, 70);
+
+            }
+            100%{
+                border-left: 4px solid rgb(218, 218, 70);
+
+            }
+
+        }
+        #btn i{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colorContainer">
+        <span id="animation"></span>
+        <button id="btn" onclick="colorChange()">Start<i class="fa-solid fa-droplet"></i></button>
+    </div>
+</body>
+<script>
+
+    function colorChange() {
+        let first = Math.round(Math.random() * 255);
+        let second = Math.round(Math.random() * 255);
+        let third = Math.round(Math.random() * 255);
+        let storeColor='background-color:rgb('+ first + ' ' + second + ' ' + third + ')';
+        let btn = document.getElementById('btn')
+        btn.style=storeColor;
+        btn.innerHTML=storeColor;
+        let body=document.getElementsByClassName('colorContainer')[0].style=storeColor;
+    }
+</script>
+
+</html>
